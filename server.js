@@ -58,4 +58,21 @@ app.get('/pokemon/:pokemon', async (req, res) => {
     res.render('pokemon', { path: req.path, pokemon: pokemon})
 })
 
+app.get('/error', async (req, res) => {
+    res.render('error')
+})
+
+app.post('/search', async (req, res) => {
+    const search = req.body.body.toLowerCase()
+
+    try {
+        const vastaus = await fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
+        const pokemon = await vastaus.json()
+
+        res.render('pokemon', { path: req.path, pokemon: pokemon})
+    } catch {
+        res.render('error')
+    }
+})
+
 app.listen(port, host, () => console.log(`Server is running at http://${host}:${port}/`))
