@@ -5,6 +5,11 @@
     margin-bottom: 32px;
 }
 
+.footer p {
+    color: lightgray;
+    text-align: center;
+}
+
 .header h1 {
     font-style: italic;
     font-size: 64px;
